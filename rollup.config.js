@@ -5,19 +5,13 @@ import filesize from 'rollup-plugin-filesize';
 import pkg from './package.json' with { type: 'json' };
 
 
-const entries = {
-
-    'index': 'src/icons/components/index.ts'
-
-};
-
 const extensions = ['.js', '.ts', '.tsx', '.jsx', '.json'];
 const externalIds = [...Object.keys(pkg.dependencies ?? {}), ...Object.keys(pkg.peerDependencies ?? {})];
 const external = (id) => externalIds.some(dep => id === dep || id.startsWith(dep + '/'));
 
-export default [{
+export default {
 
-    input: entries,
+    input: 'src/icons/components/index.ts',
     external,
 
     plugins: [
@@ -27,22 +21,10 @@ export default [{
         filesize()
     ],
 
-    output: [
-        {
-            dir: 'dist/cjs',
-            format: 'cjs',
-            sourcemap: true,
-            entryFileNames: '[name].js',
-            chunkFileNames: 'chunks/[hash].js',
-            exports: 'auto'
-        },
-        {
-            dir: 'dist/esm',
-            format: 'esm',
-            sourcemap: true,
-            entryFileNames: '[name].js',
-            chunkFileNames: 'chunks/[hash].js'
-        }
-    ]
+    output: {
+        dir: 'dist',
+        format: 'esm',
+        sourcemap: true
+    }
 
-}];
+};

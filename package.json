@@ -1,29 +1,26 @@
 {
   "name": "@nimbox/icons-react",
   "version": "1.0.1",
-  "private": false,
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/types/icons/components/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js",
-      "default": "./dist/esm/index.js",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js",
       "development": "./src/icons/components/index.ts"
     }
   },
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
   "types": "./dist/types/icons/components/index.d.ts",
   "files": [
     "dist/**/*"
   ],
   "scripts": {
     "check": "tsc --noEmit",
-    "build": "rm -rf dist/* && npm run build:icons && npm run build:types && rollup -c",
+    "prepare-dist": "rm -rf dist/* && npm run build:icons && npm run build:types",
+    "build": "npm run prepare-dist && rollup -c",
     "build:types": "tsc -p tsconfig.types.json --emitDeclarationOnly --declaration --outDir dist/types",
-    "build:watch": "rm -rf dist/* && npm run build:icons && npm run build:types && rollup -cw",
-    "build:watch:yalc": "rm -rf dist/* && npm run build:icons && npm run build:types && rollup -cw -p ./yalc.js",
+    "build:watch": "npm run prepare-dist && rollup -cw",
+    "build:watch:yalc": "npm run prepare-dist && rollup -cw -p ./yalc.js",
     "build:icons": "rm -f src/icons/components/*.tsx && cp src/icons/sources/*.svg src/icons/outlines && svgr --config-file icons.svgr.config.js --icon --typescript --silent --out-dir src/icons/components src/icons/outlines",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -38,26 +35,26 @@
     "react": "^19"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-typescript": "^12.3.0",
-    "@storybook/addon-docs": "^10.0.8",
-    "@storybook/addon-links": "^10.0.8",
-    "@storybook/react-vite": "^10.0.8",
+    "@storybook/addon-docs": "^10.4.6",
+    "@storybook/addon-links": "^10.4.6",
+    "@storybook/react-vite": "^10.4.6",
     "@svgr/cli": "^8.1.0",
-    "@tailwindcss/vite": "^4.1.17",
-    "@types/react": "^19.2.6",
-    "@vitejs/plugin-react": "^5.1.1",
-    "execa": "^9.6.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "rollup": "^4.53.2",
+    "@vitejs/plugin-react": "^5.2.0",
+    "execa": "^9.6.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "rollup": "^4.62.2",
     "rollup-plugin-filesize": "^10.0.0",
-    "storybook": "^10.0.8",
-    "tailwindcss": "^4.1.17",
+    "storybook": "^10.4.6",
+    "tailwindcss": "^4.3.1",
     "tslib": "^2.8.1",
     "typescript": "^5.9.3",
-    "vite": "^7.2.2"
+    "vite": "^7.3.5"
   }
 }

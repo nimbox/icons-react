@@ -15,10 +15,10 @@
     "dist/**/*"
   ],
   "scripts": {
-    "check": "tsc -b",
+    "check": "tsc --noEmit",
     "prepare-dist": "rm -rf dist/* && npm run build:icons && npm run build:types",
     "build": "npm run prepare-dist && rollup -c",
-    "build:types": "tsc -p tsconfig.types.json --emitDeclarationOnly --declaration --outDir dist/types",
+    "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly --declaration --outDir dist/types",
     "build:watch": "npm run prepare-dist && rollup -cw",
     "build:watch:yalc": "npm run prepare-dist && rollup -cw -p ./yalc.js",
     "build:icons": "rm -f src/icons/components/*.tsx && cp src/icons/sources/*.svg src/icons/outlines && svgr --config-file icons.svgr.config.js --icon --typescript --silent --out-dir src/icons/components src/icons/outlines",

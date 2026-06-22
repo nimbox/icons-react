@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.app.json",
+  "extends": "./tsconfig.json",
   "include": [
     "src"
   ],
@@ -8,6 +8,10 @@
     "**/*.test.*"
   ],
   "compilerOptions": {
-    "allowImportingTsExtensions": false
+    "allowImportingTsExtensions": false,
+    "noEmit": false,
+    "types": ["react"],
+    "stripInternal": true,
+    "rootDir": "src"
   }
 }

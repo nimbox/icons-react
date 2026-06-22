@@ -1,4 +1,4 @@
-import React, { FC, SVGProps } from 'react';
+import React, { type FC, type SVGProps } from 'react';
 import * as icons from './components';
 
 

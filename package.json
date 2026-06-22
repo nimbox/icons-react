@@ -15,7 +15,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "check": "tsc --noEmit",
+    "check": "tsc -b",
     "prepare-dist": "rm -rf dist/* && npm run build:icons && npm run build:types",
     "build": "npm run prepare-dist && rollup -c",
     "build:types": "tsc -p tsconfig.types.json --emitDeclarationOnly --declaration --outDir dist/types",

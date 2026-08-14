@@ -8,9 +8,9 @@ const SvgHorizontalDots = (props: SVGProps<SVGSVGElement>) => (
     fill="currentColor"
     {...props}
   >
-    <circle cx={8} cy={16} r={2} />
-    <circle cx={16} cy={16} r={2} />
-    <circle cx={24} cy={16} r={2} />
+    <circle cx={8} cy={16} r={3} />
+    <circle cx={16} cy={16} r={3} />
+    <circle cx={24} cy={16} r={3} />
   </svg>
 );
 export default SvgHorizontalDots;
